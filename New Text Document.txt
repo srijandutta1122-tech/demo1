@@ -64,20 +64,4 @@ public:
     }
 };
 
-int main() {
-    // Creating objects
-    Manager m1("Alice", 101, 80000, 5);
-    Developer d1("Bob", 102, 60000, "C++");
-
-    // Polymorphism in action
-    Employee* e1 = &m1;
-    Employee* e2 = &d1;
-
-    cout << "--- Manager Details ---" << endl;
-    e1->showDetails();
-
-    cout << "\n--- Developer Details ---" << endl;
-    e2->showDetails();
-
-    return 0;
 }
