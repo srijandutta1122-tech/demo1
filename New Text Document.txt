@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+
+// Base class (Parent)
+class Employee {
+protected:
+    string name;
+    int id;
+    double salary;
+
+public:
+    // Constructor
+    Employee(string n, int i, double s) {
+        name = n;
+        id = i;
+        salary = s;
+    }
+
+    // Virtual function for polymorphism
+    virtual void showDetails() {
+        cout << "Employee Name: " << name << endl;
+        cout << "Employee ID: " << id << endl;
+        cout << "Salary: $" << salary << endl;
+    }
+};
+
+// Derived class (Child)
+class Manager : public Employee {
+private:
+    int teamSize;
+
+public:
+    // Constructor using base class constructor
+    Manager(string n, int i, double s, int t)
+        : Employee(n, i, s) {
+        teamSize = t;
+    }
+
+    // Overriding function (Polymorphism)
+    void showDetails() override {
+        cout << "Manager Name: " << name << endl;
+        cout << "Manager ID: " << id << endl;
+        cout << "Salary: $" << salary << endl;
+        cout << "Team Size: " << teamSize << " members" << endl;
+    }
+};
+
+// Another Derived class
+class Developer : public Employee {
+private:
+    string programmingLanguage;
+
+public:
+    Developer(string n, int i, double s, string lang)
+        : Employee(n, i, s) {
+        programmingLanguage = lang;
+    }
+
+    void showDetails() override {
+        cout << "Developer Name: " << name << endl;
+        cout << "Developer ID: " << id << endl;
+        cout << "Salary: $" << salary << endl;
+        cout << "Language: " << programmingLanguage << endl;
+    }
+};
+
+int main() {
+    // Creating objects
+    Manager m1("Alice", 101, 80000, 5);
+    Developer d1("Bob", 102, 60000, "C++");
+
+    // Polymorphism in action
+    Employee* e1 = &m1;
+    Employee* e2 = &d1;
+
+    cout << "--- Manager Details ---" << endl;
+    e1->showDetails();
+
+    cout << "\n--- Developer Details ---" << endl;
+    e2->showDetails();
+
+    return 0;
+}
