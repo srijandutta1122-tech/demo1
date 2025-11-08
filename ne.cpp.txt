@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+// Base Class
+class Vehicle {
+protected:
+    string brand;
+    int speed;
+
+public:
+    Vehicle(string b, int s) : brand(b), speed(s) {}
+
+    // Virtual function (Polymorphism)
+    virtual void showInfo() {
+        cout << "Brand: " << brand << endl;
+        cout << "Speed: " << speed << " km/h" << endl;
+    }
+};
+
+// Derived Class 1
+class Car : public Vehicle {
+private:
+    int seats;
+
+public:
+    Car(string b, int s, int seatCount) : Vehicle(b, s), seats(seatCount) {}
+
+    void showInfo() override {
+        cout << "Car Brand: " << brand << endl;
+        cout << "Max Speed: " << speed << " km/h" << endl;
+        cout << "Seats: " << seats << endl;
+    }
+};
+
+// Derived Class 2
+class Bike : public Vehicle {
+private:
+    bool hasGear;
+
+public:
+    Bike(string b, int s, bool gear) : Vehicle(b, s), hasGear(gear) {}
+
+    void showInfo() overr
