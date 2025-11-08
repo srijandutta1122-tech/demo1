@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//srijan gay
+
 // Base class (Parent)
 class Employee {
 protected:
